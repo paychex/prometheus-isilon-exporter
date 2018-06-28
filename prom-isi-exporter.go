@@ -119,7 +119,7 @@ func queryHandler(w http.ResponseWriter, r *http.Request) {
 			registry.MustRegister(clusterSummaryExporter)
 		}
 	}
-	// Delegate http serving to Promethues client library, which will call collector.Collect.
+	// Delegate http serving to Prometheus client library, which will call collector.Collect.
 	h := promhttp.HandlerFor(registry, promhttp.HandlerOpts{})
 	h.ServeHTTP(w, r)
 	duration := float64(time.Since(start).Seconds())

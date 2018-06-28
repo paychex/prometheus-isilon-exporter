@@ -49,7 +49,7 @@ func (c *ISIClient) CallIsiAPI(request string, retryAttempts int) string {
 		log.Fatalf("\n - Error connecting to Isilon: %s", err)
 	}
 	defer resp.Body.Close()
-	respText, err := ioutil.ReadAll(resp.Body)
+	respText, _ := ioutil.ReadAll(resp.Body)
 	s := string(respText)
 	if resp.StatusCode == 200 {
 		log.Debugln(s)
