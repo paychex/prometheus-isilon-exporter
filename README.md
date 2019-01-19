@@ -1,5 +1,5 @@
 # Prometheus exporter for EMC Isilon
-
+[![Build Status](https://api.travis-ci.com/paychex/prometheus-isilon-exporter.svg?branch=master)](https://travis-ci.com/paychex/prometheus-isilon-exporter/builds)
 [![Go Report Card](https://goreportcard.com/badge/github.com/paychex/prometheus-isilon-exporter)](https://goreportcard.com/report/github.com/paychex/prometheus-isilon-exporter)
 
 This exporter collects performance and usage stats from Dell/EMC Isilon cluster running version 8.x and above OneFS code and makes it available for Prometheus to scrape.  It is not recommended that you run this tool on the Isilon Cluster node(s), instead it should be run on a separate machine.  The application can be configured to monitor just one cluster, or can be configured to query multiple Isilon clusters.  See configuration options below for how to use this tool.
