@@ -105,7 +105,7 @@ func queryHandler(w http.ResponseWriter, r *http.Request) {
 		isiCollectionRequestErrors.Inc()
 	} else {
 		log.Debug("Isilon Cluster version is: " + c.ISIVersion)
-		log.Debug("Isilon Cluster node count: %v", c.NumNodes)
+		log.Debugf("Isilon Cluster node count: %v", c.NumNodes)
 		isiClusterInfo.WithLabelValues(c.ISIVersion, strconv.FormatInt(c.NumNodes, 10), c.ClusterName).Set(1)
 		registry.MustRegister(isiClusterInfo)
 
@@ -184,7 +184,7 @@ func main() {
 		}
 
 		log.Debug("Isilon Cluster version is: " + c.ISIVersion)
-		log.Debug("Isilon Cluster node count: %v", c.NumNodes)
+		log.Debugf("Isilon Cluster node count: %v", c.NumNodes)
 		isiClusterInfo.WithLabelValues(c.ISIVersion, strconv.FormatInt(c.NumNodes, 10), c.ClusterName).Set(1)
 		prometheus.MustRegister(isiClusterInfo)
 
