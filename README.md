@@ -84,7 +84,9 @@ scrape_configs:
 
 ## Building
 
-This exporter can run on any go supported platform.  To build run:
+This exporter can run on any go supported platform.  As of version 1.2 we have moved to using Go 1.11 and higher. Testing is done with Go 1.12 but go 1.11 should work for anyone using it.
+
+To build run:
 `go build`
 
 You can also run:

@@ -6,3 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.0.0] - 2018-05-17
 Initial release - [Mark DeNeve](https://github.com/xphyr)
+
+## [1.2.0] - 2018-05-17
+Changed client handling to improve on memory usage
+Updated code layout for easier management
+Moved to go modules for building
+[Mark DeNeve](https://github.com/xphyr)
