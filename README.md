@@ -1,18 +1,18 @@
 # Prometheus exporter for EMC Isilon
-
+[![Build Status](https://api.travis-ci.com/paychex/prometheus-isilon-exporter.svg?branch=master)](https://travis-ci.com/paychex/prometheus-isilon-exporter/builds)
 [![Go Report Card](https://goreportcard.com/badge/github.com/paychex/prometheus-isilon-exporter)](https://goreportcard.com/report/github.com/paychex/prometheus-isilon-exporter)
 
 This exporter collects performance and usage stats from Dell/EMC Isilon cluster running version 8.x and above OneFS code and makes it available for Prometheus to scrape.  It is not recommended that you run this tool on the Isilon Cluster node(s), instead it should be run on a separate machine.  The application can be configured to monitor just one cluster, or can be configured to query multiple Isilon clusters.  See configuration options below for how to use this tool.
 
 ## Usage
 
-| Flag      | Description                                                                                                                                           | Default Value | Env Name            |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------- |
-| url       | Base URL of the Isilon management interface.  Normally something like https://myisilon.internal.com:8080.  This is ignored when using the multi flag. | none          | ISIENV_URL          |
-| username  | Username with which to connect to the Isilon API                                                                                                      | none          | ISIENV_USERNAME     |
-| password  | Password with which to connect to the Isilon API                                                                                                      | none          | ISIENV_PASSWORD     |
-| bind_port | Port to bind the exporter endpoint to                                                                                                                 | 9437          | ISIENV_BIND_PORT    |
-| multi     | Enable multi query endpoint                                                                                                                           | false         | ISIENV_MULTI        |
+| Flag      | Description                                                                                                                                           | Default Value | Env Name         |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|------------------|
+| url       | Base URL of the Isilon management interface.  Normally something like https://myisilon.internal.com:8080.  This is ignored when using the multi flag. | none          | ISIENV_URL       |
+| username  | Username with which to connect to the Isilon API                                                                                                      | none          | ISIENV_USERNAME  |
+| password  | Password with which to connect to the Isilon API                                                                                                      | none          | ISIENV_PASSWORD  |
+| bind_port | Port to bind the exporter endpoint to                                                                                                                 | 9437          | ISIENV_BIND_PORT |
+| multi     | Enable multi query endpoint                                                                                                                           | false         | ISIENV_MULTI     |
 
 ### Running in multi-query mode
 
@@ -84,7 +84,9 @@ scrape_configs:
 
 ## Building
 
-This exporter can run on any go supported platform.  To build run:
+This exporter can run on any go supported platform.  As of version 1.2 we have moved to using Go 1.11 and higher. Testing is done with Go 1.12 but go 1.11 should work for anyone using it.
+
+To build run:
 `go build`
 
 You can also run:
