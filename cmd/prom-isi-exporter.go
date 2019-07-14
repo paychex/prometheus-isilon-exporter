@@ -29,12 +29,12 @@ var (
 	config     *isiconfig.Config
 	debugLevel = flag.Bool("debug", false, "enable debug messages")
 
-	// BuildTime is a time label of the moment when the binary was built
-	BuildTime = "unset"
-	// Commit is a last commit hash at the moment when the binary was built
-	Commit = "unset"
-	// Release is a semantic version of current build
-	Release = "unset"
+	// date is a time label of the moment when the binary was built
+	date = "unset"
+	// commit is a last commit hash at the moment when the binary was built
+	commit = "unset"
+	// version is a semantic version of current build
+	version = "unset"
 
 	// Metrics about the EMC Isilon exporter itself.
 	isiCollectionBuildInfo = prometheus.NewGaugeVec(
@@ -67,7 +67,7 @@ func init() {
 	}
 
 	//
-	isiCollectionBuildInfo.WithLabelValues(Release, Commit, runtime.Version()).Set(1)
+	isiCollectionBuildInfo.WithLabelValues(version, commit, runtime.Version()).Set(1)
 	prometheus.MustRegister(isiCollectionBuildInfo)
 
 	// gather our configuration
@@ -114,7 +114,7 @@ func queryHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	log.Info("Starting the Isilon Exporter service...")
 	log.Infof("commit: %s, build time: %s, release: %s",
-		Commit, BuildTime, Release,
+		commit, date, version,
 	)
 	// This can go one of two ways
 	// either just monitor one device or go into a query mode based on flag/env variable "multiquery"
