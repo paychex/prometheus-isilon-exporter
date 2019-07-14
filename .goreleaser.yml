@@ -1,6 +1,7 @@
 before:
   hooks:
   - go mod download
+  - go get ./...
 builds:
   - 
     main: ./cmd/prom-isi-exporter.go
