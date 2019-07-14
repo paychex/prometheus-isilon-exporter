@@ -6,13 +6,13 @@ This exporter collects performance and usage stats from Dell/EMC Isilon cluster 
 
 ## Usage
 
-| Flag      | Description                                                                                                                                           | Default Value | Env Name            |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------- |
-| url       | Base URL of the Isilon management interface.  Normally something like https://myisilon.internal.com:8080.  This is ignored when using the multi flag. | none          | ISIENV_URL          |
-| username  | Username with which to connect to the Isilon API                                                                                                      | none          | ISIENV_USERNAME     |
-| password  | Password with which to connect to the Isilon API                                                                                                      | none          | ISIENV_PASSWORD     |
-| bind_port | Port to bind the exporter endpoint to                                                                                                                 | 9437          | ISIENV_BIND_PORT    |
-| multi     | Enable multi query endpoint                                                                                                                           | false         | ISIENV_MULTI        |
+| Flag      | Description                                                                                                                                           | Default Value | Env Name         |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|------------------|
+| url       | Base URL of the Isilon management interface.  Normally something like https://myisilon.internal.com:8080.  This is ignored when using the multi flag. | none          | ISIENV_URL       |
+| username  | Username with which to connect to the Isilon API                                                                                                      | none          | ISIENV_USERNAME  |
+| password  | Password with which to connect to the Isilon API                                                                                                      | none          | ISIENV_PASSWORD  |
+| bind_port | Port to bind the exporter endpoint to                                                                                                                 | 9437          | ISIENV_BIND_PORT |
+| multi     | Enable multi query endpoint                                                                                                                           | false         | ISIENV_MULTI     |
 
 ### Running in multi-query mode
 
