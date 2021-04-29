@@ -36,6 +36,7 @@ spec:
           # Get environment variables from configmap and secret defined in helpers
           env:          
           {{- include "helpers.list-env-variables" . | indent 10 }}
+          # --
           ports:
             - name: http
               containerPort: 80
