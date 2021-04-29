@@ -38,7 +38,8 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 9437
+  port: 3000
+  targetPort: 9437
 
 ingress:
   enabled: false
@@ -80,6 +81,7 @@ tolerations: []
 
 affinity: {}
 
+# ENV
 secret:
   name: app-env-vars-secret
 configmap: 
@@ -90,7 +92,12 @@ env:
     USERNAME: ISILON_USERNAME
   secret:
     PASSWORD: ISILON_PASSWORD
-# env:
-#   URL: http://isilon:8080
-#   USERNAME: ISILON_USERNAME
-#   PASSWORD: ISILON_PASSWORD
+
+# Health
+health:
+  liveness:
+    port: 9437
+    path: /
+  readiness:
+    port: 9437
+    path: /
