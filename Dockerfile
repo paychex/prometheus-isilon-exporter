@@ -10,6 +10,7 @@ RUN make build
 FROM alpine:3.13.5 as runtime
 
 COPY --from=builder /build/bin/prometheus-isilon-exporter /app/prometheus-isilon-exporter
+COPY --from=builder /build/entrypoint.sh /app/entrypoint.sh
 
 RUN apk --no-cache add ca-certificates wget \
     && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
@@ -17,4 +18,4 @@ RUN apk --no-cache add ca-certificates wget \
     && apk add glibc-2.28-r0.apk
 
 
-CMD [ "/app/prometheus-isilon-exporter", "--username", "${USERNAME}", "--password", "${PASSWORD}", "--url", "${URL}" ]
+CMD [ "/app/entrypoint.sh" ]
