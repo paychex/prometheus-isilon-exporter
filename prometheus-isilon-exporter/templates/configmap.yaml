@@ -6,5 +6,5 @@ metadata:
   name: {{ .Values.configmap.name }}
 data:
   {{- range $key, $val := .Values.env.normal }}
-  {{ $key }}: {{ $val }}
+  {{ $key }}: "{{ $val }}"
   {{- end}}

@@ -94,6 +94,7 @@ env:
     USERNAME: ISILON_USERNAME
   secret:
     PASSWORD: ISILON_PASSWORD
+    ISIENV_BINDPORT: 80
 
 # Health
 health:
