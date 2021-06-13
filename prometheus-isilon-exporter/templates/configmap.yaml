@@ -1,5 +1,5 @@
 # B"H
-# Configmap to add environment variables from values.yaml in use in helpers.tpl
+# Configmap adding environment variables from values.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:

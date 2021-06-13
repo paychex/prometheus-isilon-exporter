@@ -61,22 +61,22 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
-{{/*
-Add normal and secret env variables 
-*/}}
-{{- define "helpers.list-env-variables"}}
-{{- range $key, $val := .Values.env.secret }}
-- name: {{ $key }}
-  valueFrom:
-    secretKeyRef:
-      name: app-env-vars-secret
-      key: {{ $key }}
-{{- end}}
-{{- range $key, $val := .Values.env.normal }}
-- name: {{ $key }}
-  valueFrom:
-    configMapKeyRef:
-      name: app-env-vars-configmap
-      key: {{ $key }}
-{{- end}}
-{{- end }}
+# {{/*
+# Add normal and secret env variables 
+# */}}
+# {{- define "helpers.list-env-variables"}}
+# {{- range $key, $val := .Values.env.secret }}
+# - name: {{ $key }}
+#   valueFrom:
+#     secretKeyRef:
+#       name: app-env-vars-secret
+#       key: {{ $key }}
+# {{- end}}
+# {{- range $key, $val := .Values.env.normal }}
+# - name: {{ $key }}
+#   valueFrom:
+#     configMapKeyRef:
+#       name: app-env-vars-configmap
+#       key: {{ $key }}
+# {{- end}}
+# {{- end }}

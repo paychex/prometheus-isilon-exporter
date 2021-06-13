@@ -39,8 +39,8 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 3000
-  targetPort: 9437
+  port: 80
+  targetPort: 80
 
 ingress:
   enabled: false
@@ -92,15 +92,15 @@ env:
   normal:
     URL: http://isilon:8080
     USERNAME: ISILON_USERNAME
+    ISIENV_BINDPORT: 80
   secret:
     PASSWORD: ISILON_PASSWORD
-    ISIENV_BINDPORT: 80
 
 # Health
 health:
   liveness:
-    port: 9437
+    port: 80
     path: /
   readiness:
-    port: 9437
+    port: 80
     path: /

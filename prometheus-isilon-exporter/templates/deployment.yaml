@@ -33,22 +33,23 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          # Get environment variables from configmap and secret defined in helpers
-          env:          
-          {{- include "helpers.list-env-variables" . | indent 10 }}
-          # --
+          envFrom:
+          - configMapRef: 
+              name: {{ .Values.configmap.name }}
+          - secretRef: 
+              name: {{ .Values.secret.name }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: "{{ .Values.helath.liveness.path }}"
-              port: "{{ .Values.health.liveness.port }}"
+              path: "{{ .Values.health.liveness.path }}"
+              port: {{ .Values.health.liveness.port }}
           readinessProbe:
             httpGet:
-              path: "{{ .Values.helath.readiness.path }}"
-              port: "{{ .Values.health.readiness.port }}"
+              path: "{{ .Values.health.readiness.path }}"
+              port: {{ .Values.health.readiness.port }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
