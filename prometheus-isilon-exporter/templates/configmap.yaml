@@ -1,0 +1,10 @@
+# B"H
+# Configmap adding environment variables from values.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configmap.name }}
+data:
+  {{- range $key, $val := .Values.env.normal }}
+  {{ $key }}: "{{ $val }}"
+  {{- end}}
